@@ -1,3 +1,15 @@
 #+TITLE: typop
 #+AUTHOR: d0ntrash
 * Pwn/Typop
+** Challenge Info
+   * Name: Typop
+   * Author: JW#9396
+   * Description: While writing the feedback form for idekCTF, JW made a small typo. It still compiled though, so what could possibly go wrong?
+   * Link to files: [[https://idekctf-challenges.storage.googleapis.com/uploads/14d19059835451f069fc575d8b2b9818a1fc2e5c254fc1c36218e6220d29bdb1/typop.tar][idek2022]]
+** Intro
+   :PROPERTIES:
+   :ID:       016f2d9c-2fde-478c-bb03-5f140e01edca
+   :END:
+
+
+   [[file:data/01/6f2d9c-2fde-478c-bb03-5f140e01edca/screenshot-20230116-135923.png]]
