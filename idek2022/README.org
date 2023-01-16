@@ -88,7 +88,7 @@
     by using simple ROP gadgets. For ~rdx~ however I did not find any useful gadgets.
 
     So instead of calling the entry point of the ~win~ function we can also call it with an offset to the point where ~fopen~ gets called.
-    Therefor we have to set the parameters for ~fopen~ befor jumping there. ~fopen~ takes a pointer to the filename and a pointer to a string containing
+    Therefore, we have to set the parameters for ~fopen~ befor jumping there. ~fopen~ takes a pointer to the filename and a pointer to a string containing
     the mode. Since we only need 2 parameters which get passed via ~rdi~ and ~rsi~ we can achieve this using our already found gadgets:
 
     #+begin_src python
