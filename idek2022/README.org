@@ -52,6 +52,7 @@
     #+end_src
 
     After the overflow the stack looks like this:
+
     [[file:data/f1/e4da43-eb15-4633-84cb-dac644906a77/screenshot-20230116-143231.png]]
 
     Now that we know the canary, we can use the second ~read()~ call to write it back to the stack.
